@@ -1,0 +1,28 @@
+
+代码功能：TCPS服务端代码，侦听的是12348端口，
+同时允许2个用户接入，支持共5次累计接入后程序退出。
+每次接入时长5秒左右，实现数据回传。
+
+
+当前保存的是在Windows下CMakeLists.txt，
+Windows系统下编译时，通过命令行，导航到Build文件夹下，
+输入cmake -G "MinGW Makefiles" ..  意思是生成MinGW格式的Makefile文件
+即可生成在Windows系统下的Makefile文件
+然后命令行中输入make并回车，就会根据Makefile文件，在Bin路径中生成CM5.exe可执行文件。
+
+注意：该可执行文件，在运行时，需要以下三个.dll文件才能在未安装MinGW的电脑下运行
+【1】、libgcc_s_seh-1.dll
+【2】、libstdc++-6.dll
+【3】、libwinpthread-1.dll
+以上三个文件可在MinGW编译器mingw64_posix版的Bin文件夹下找到
+
+
+
+
+
+如果想要在Linux下运行，则需要进行以下修改：
+【1】、CMakeLists.txt文件的头文件路径 和 库信息需要修改
+【2】、FUN_StringConv.h文件中的SystemFlag宏定义要修改
+同样的，命令行导航到Build后，输入cmake ..  和 make 即可生成在Linux系统下的可执行文件CM5。
+此处cmake没有加-G选项，是因为默认生成的就是MinGW格式的Makefile文件。故不用加-G选项。
+运行CM5时，需要增加sudo权限，才能运行。
