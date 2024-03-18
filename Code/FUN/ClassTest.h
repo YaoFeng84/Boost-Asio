@@ -7,7 +7,7 @@ class TCPSProcess
 {
 public:
      //
-     TCPSProcess();
+     explicit TCPSProcess();
      ~TCPSProcess();
      //
      int32_t Send(uint8_t*,uint32_t,uint32_t);

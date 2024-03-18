@@ -44,7 +44,7 @@ typedef std::function<void(SocketType,BoostStatus, std::string, uint16_t)> NetSt
 class TCPSCommunicat
 {
 public:
-     TCPSCommunicat(std::unique_ptr<boost::asio::ip::tcp::socket>,\
+     explicit TCPSCommunicat(std::unique_ptr<boost::asio::ip::tcp::socket>,\
                    SocketType,\
                    NetReceDataEvent,\
                    NetStatusEvent);
@@ -88,7 +88,7 @@ typedef std::function<void(std::unique_ptr<TCPSCommunicat>,NetReceDataEvent*,Net
 class Boost_TCPS
 {
 public:
-     Boost_TCPS(NetStatusEvent,UserLinkedEvent);
+     explicit Boost_TCPS(NetStatusEvent,UserLinkedEvent);
      ~Boost_TCPS();
      //启动侦听函数的申明
      int8_t FUN_TCPS_StartListen(IPVersion, std::string lport, NetReceDataEvent, NetStatusEvent);
@@ -122,7 +122,7 @@ private:
 class Boost_TCPC
 {
 public:
-     Boost_TCPC(NetReceDataEvent,NetStatusEvent);
+     explicit Boost_TCPC(NetReceDataEvent,NetStatusEvent);
      ~Boost_TCPC();
      //开始连接 函数申明
      int8_t FUN_TCPC_Connect(std::string rips, uint16_t rport);
@@ -147,7 +147,7 @@ private:
 class Boost_UDP
 {
 public:
-     Boost_UDP(IPVersion, uint16_t, NetReceDataEvent, NetStatusEvent);
+     explicit Boost_UDP(IPVersion, uint16_t, NetReceDataEvent, NetStatusEvent);
      ~Boost_UDP();
      //申明阻塞型发送数据方法
      int32_t FUN_UDP_Send(std::string rips,uint16_t rport,std::string message);
